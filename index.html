@@ -79,7 +79,7 @@
  
 <input type = "button"
         class = "button"
-        value="Enter name" 
+        value="Enter Name" 
         onclick == function()
             {alertTime(user);}>
 
@@ -87,15 +87,14 @@
 </div>
  
 <script>
-    var now = new Date();
-    
+
     function alertTime()
     {
          document.querySelector(".button").
                 onclick = function () {
-                    if(now.getHours>18)
+                    if(today.getHours>18)
                     {alert("Goodnight" + user)}
-                    else if(now.GetHours<18 && now.GetHours>12)
+                    else if(today.getHours<18 && now.GetHours>12)
                     {alert("Goodafternoon" + user)}
                     else
                     {alert("Goodmorning" + user)}
