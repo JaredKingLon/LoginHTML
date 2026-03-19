@@ -36,7 +36,7 @@
 
     }
  
-    input, button {
+    input[type = "button"] {
 
       width: 100%;
 
@@ -77,14 +77,30 @@
   <input id="user" placeholder="Username">
 
  
-  <button onclick="login()">Enter Name</button>
- 
+<input type = "button"
+        class = "button"
+        value="Button" 
+        onclick == alertTime(user)>
+
   <div id="msg"></div>
 </div>
  
 <script>
-
-alert(user);
+    var now = new Date();
+    
+    function alertTime()
+    {
+         document.querySelector(".button").
+                onclick = function () {
+                    if(now.getHours>18)
+                    {alert("Goodnight" + user)}
+                    else if(now.GetHours<18 && now.GetHours>12)
+                    {alert("Goodafternoon" + user)}
+                    else
+                    {alert("Goodmorning" + user)}
+                }
+    }
+    
 </script>
  
 </body>
