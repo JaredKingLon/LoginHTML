@@ -1,107 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Simple File Login</title>
 <style>
-
     body {
-
       font-family: Arial;
-
       background: #eef3f9;
-
       display: flex;
-
       justify-content: center;
-
       align-items: center;
-
       height: 100vh;
-
     }
- 
     .box {
-
       background: white;
-
       padding: 25px;
-
       border-radius: 12px;
-
       width: 320px;
-
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-
     }
- 
-    input[type = "button"] {
-
+    input[type="button"] {
       width: 100%;
-
       padding: 10px;
-
       margin-top: 10px;
-
     }
- 
     button {
-
       background: #2563eb;
-
       color: white;
-
       border: none;
-
       cursor: pointer;
-
     }
- 
     #msg {
-
       margin-top: 10px;
-
       font-weight: bold;
-
       text-align: center;
-
     }
 </style>
 </head>
 <body>
- 
+
 <div class="box">
 <h2>Login</h2>
- 
-  <input id="user" placeholder="Username">
 
- 
-<input type = "button"
-        class = "button"
-        value="Enter Name" 
-        onclick == "alertTime()">
+<input id="user" placeholder="Username">
 
-  <div id="msg"></div>
+<input type="button" class="button" value="Enter Name" onclick="alertTime()">
+
+<div id="msg"></div>
 </div>
- 
-<script>
 
-    function alertTime()
-    {
-         document.querySelector(".button").
-                onclick = function () {
-                    if(today.getHours>18)
-                    {alert("Goodnight" + user)}
-                    else if(today.getHours<18 && now.GetHours>12)
-                    {alert("Goodafternoon" + user)}
-                    else
-                    {alert("Goodmorning" + user)}
-                                        }
+<script>
+function alertTime() {
+    let user = document.getElementById("user").value;
+    let now = new Date();
+    let hour = now.getHours();
+
+    if (hour >= 18) {
+        alert("Good night " + user);
+    } else if (hour >= 12) {
+        alert("Good afternoon " + user);
+    } else {
+        alert("Good morning " + user);
     }
-    
+}
 </script>
- 
+
 </body>
 </html>
- 
