@@ -75,57 +75,16 @@
 <h2>Login</h2>
  
   <input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
+
  
-  <button onclick="login()">Login</button>
+  <button onclick="login()">Enter Name</button>
  
   <div id="msg"></div>
 </div>
  
 <script>
 
-  // "File-based" users (simulating a file)
-
-  const users = [
-
-    { username: "jerome", password: "1234" },
-
-    { username: "student", password: "abc" },
-
-    {username: "matthew", password: "jaredismykingandsaviour" }
-
-  ];
- 
-  function login() {
-
-    const u = document.getElementById("user").value;
-
-    const p = document.getElementById("pass").value;
-
-    const msg = document.getElementById("msg");
- 
-    const found = users.find(user =>
-
-      user.username === u && user.password === p
-
-    );
- 
-    if (found) {
-
-      msg.style.color = "green";
-
-      msg.textContent = "Login successful!";
-
-        
-    } else {
-
-      msg.style.color = "red";
-
-      msg.textContent = "Wrong username or password";
-
-    }
-
-  }
+alert(user);
 </script>
  
 </body>
