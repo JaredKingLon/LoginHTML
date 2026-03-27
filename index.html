@@ -1,69 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Simple File Login</title>
-<style>
-    body {
-      font-family: Arial;
-      background: #eef3f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .box {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      width: 320px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    input[type="button"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-    }
-    button {
-      background: #2563eb;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    #msg {
-      margin-top: 10px;
-      font-weight: bold;
-      text-align: center;
-    }
-</style>
+  <title>Supabase Table Demo</title>
 </head>
 <body>
-
-<div class="box">
-<h2>Login</h2>
-
-<input id="user" placeholder="Username">
-
-<input type="button" class="button" value="Enter Name" onclick="alertTime()">
-
-<div id="msg"></div>
-</div>
-
-<script>
-function alertTime() {
-    let user = document.getElementById("user").value;
-    let now = new Date();
-    let hour = now.getHours();
-
-    if (hour >= 18) {
-        alert("Good night " + user);
-    } else if (hour >= 12) {
-        alert("Good afternoon " + user);
-    } else {
-        alert("Good morning " + user);
+ 
+<h2>Student Scores</h2>
+<button onclick="loadData()">Load Data</button>
+ 
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Class</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+ 
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+ 
+  const supabase = createClient(
+    'https://jwlbcmapgdiljmgnqoxe.supabase.co',
+    'sb_publishable_HsEO0dQTkP3HJAy80pfMqQ_EZRay4GJ'
+  )
+ 
+  async function loadData() {
+    const { data, error } = await supabase
+      .from('students')
+      .select('*')
+ 
+    if (error) {
+      alert('Error loading data')
+      console.error(error)
+      return
     }
-}
+ 
+    const tableBody = document.getElementById('tableBody')
+    tableBody.innerHTML = ''
+ 
+    data.forEach(student => {
+      const row = `
+        <tr>
+          <td>${student.id}</td>
+          <td>${student.first_name}</td>
+          <td>${student.last_name}</td>
+          <td>${student.class_name}</td>
+          <td>${student.score}</td>
+        </tr>
+      `
+      tableBody.innerHTML += row
+    })
+  }
+ 
+  window.loadData = loadData
 </script>
-
+ 
 </body>
 </html>
+see less
+Reply
