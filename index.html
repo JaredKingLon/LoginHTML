@@ -171,7 +171,8 @@
       addLog('Supabase URL: ' + supabaseUrl);
       addLog('Table: students');
  
-      const requestUrl = `${supabaseUrl}/rest/v1/students?select=id,name,score&order=id.asc`;
+      const requestUrl = `${supabaseUrl}/rest/v1/students?select=id,firstname,lastname,score&order=id.asc`;
+
       addLog('Request URL built');
  
       const controller = new AbortController();
