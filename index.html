@@ -130,7 +130,7 @@
       addLog('Table: students');
 
       // FIXED: correct column names
-      const requestUrl = `${supabaseUrl}/rest/v1/students?select=id,firstname,lastname,score&order=id.asc`;
+      const requestUrl = `${supabaseUrl}/rest/v1/students?select=id,firstname,lastname,classname,score&order=id.asc`;
       addLog('Request URL built');
 
       const controller = new AbortController();
