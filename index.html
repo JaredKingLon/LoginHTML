@@ -88,6 +88,7 @@
 </tbody>
 </table>
 </div>
+<button onclick="addStudent()">Add New Row</button>
 
 <div class="card">
 <h2>Debug Output</h2>
@@ -248,6 +249,34 @@
     }
 
     runTest();
+    async function addStudent() {
+  const response = await fetch(`${supabaseUrl}/rest/v1/students`, {
+    method: "POST",
+    headers: {
+      "apikey": supabaseKey,
+      "Authorization": `Bearer ${supabaseKey}`,
+      "Content-Type": "application/json",
+      "Prefer": "return=representation"
+    },
+    body: JSON.stringify({
+      firstname: "placeholder",
+      lastname: "student",
+      classname: "JTP",
+      score: null
+    })
+  });
+
+  const data = await response.json();
+
+  // Show result in your debug panel
+  setDebug({
+    inserted: data
+  });
+
+  // Reload table
+  runTest();
+}
+
 </script>
 </body>
 </html>
